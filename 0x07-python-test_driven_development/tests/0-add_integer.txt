@@ -1,6 +1,10 @@
+==============================
+How to use 0-add_integer.py
+=============================
+
 This Module defines integer addition function " add_integer(a, b=98)"
 
-Usage:
+Usage
 ======
 return sum of 2 integers
 
@@ -9,18 +13,18 @@ return sum of 2 integers
 	>>> add_integer(2, 3)
 	5
 ::
-	>> add_integer(1, -2)
+	>>> add_integer(1, -2)
 	-1
 
 function works with floats by neglecting what after the point
 
 ::
-	>>add_integer(2.9,0.9)
+	>>> add_integer(2.9,0.9)
 	2
 second argument is optional - by default equals 98
 
 ::
-	>>add_integer(2)
+	>>> add_integer(2)
 	100
 
 Errors:
@@ -28,17 +32,17 @@ Errors:
 Function expects both arguments to be integer
 or float, otherwise TypeError is raised
 ::
-	>>>add_integer("Hello", 3)
+	>>> add_integer("Hello", 3)
    	Traceback (most recent call last):
    	TypeError: a must be an integer
 
 ::
-	>>>add_integer(3, "Hello")
+	>>> add_integer(3, "Hello")
         Traceback (most recent call last):
         TypeError: b must be an integer
 
 If both or not integer of float, prints the first error
 ::
-	>>>add_integer("Hello", "there")
+	>>> add_integer("Hello", "there")
         Traceback (most recent call last):
         TypeError: a must be an integer
