@@ -9,7 +9,7 @@ Usage
 module takes first and last names and prints the full name
 ::
 	>>> say_my_name = __import__("3-say_my_name").say_my_name
-	>>> say_my_name("Bassant", "Aboelhassn")
+	>>> say_my_name("Bassant", "Aboelhassan")
 	My name is Bassant Aboelhassan
 
 last name is not mandatory to specify, intialised with empty space
