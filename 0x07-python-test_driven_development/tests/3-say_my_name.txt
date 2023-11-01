@@ -15,7 +15,8 @@ module takes first and last names and prints the full name
 last name is not mandatory to specify, intialised with empty space
 ::
         >>> say_my_name("Bassant")
-        My name is Bassant
+	My name is Bassant
+
 
 Invalid names
 ================
