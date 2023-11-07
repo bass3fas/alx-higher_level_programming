@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-import os
-""" writes to file"""
+"""Defines function appends to file"""
+
 
 def append_write(filename="", text=""):
     """writes text to file
