@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-import os
 """ Reading File """
 
 def read_file(filename=""):
