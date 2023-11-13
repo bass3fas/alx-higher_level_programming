@@ -32,6 +32,7 @@ class Square(Rectangle):
             for key, value in kwargs.items():
                 setattr(self, key, value)
 
+    
     """string presentation"""
     def __str__(self):
         return f"[Square] ({self.id}) {self.x}/{self.y} - {self.width}"

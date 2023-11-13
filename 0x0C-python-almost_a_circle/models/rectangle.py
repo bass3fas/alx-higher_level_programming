@@ -88,5 +88,15 @@ class Rectangle(Base):
             for key, value in kwargs.items():
                 setattr(self, key, value)   
     """updating string method"""
+
+    def to_dictionary(self):
+        return {
+            'id': self.id,
+            'width': self.__width,
+            'height': self.__height,
+            'x': self.__x,
+            'y': self.__y
+        }
+
     def __str__(self):
         return f"[Rectangle] ({self.id}) {self.x}/{self.y} - {self.width}/{self.height}"
