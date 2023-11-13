@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """Defines a clasee inherited from Base"""
-
+from models.base import Base
 
 
 class Rectangle(Base):
