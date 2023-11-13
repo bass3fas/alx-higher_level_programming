@@ -66,3 +66,8 @@ class Rectangle(Base):
     def display(self):
         for i in range(self.__height):
             print("#" * self.__width)
+
+
+    """updating string method"""
+    def __str__(self):
+        return f"[Rectangle] ({self.id}) {self.x}/{self.y} - {self.width}/{self.height}"
