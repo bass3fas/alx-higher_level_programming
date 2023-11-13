@@ -17,7 +17,7 @@ class Rectangle(Base):
         return self.__width
     @width.setter
     def width(self, value):
-        if not isinstance(value, int):
+        if type(value) != int:
             raise TypeError("width must be an integer")
         elif value <= 0:
             raise ValueError("width must be > 0")
@@ -29,7 +29,7 @@ class Rectangle(Base):
         return self.__height
     @height.setter
     def height(self, value):
-        if not isinstance(value, int):
+        if type(value) != int:
             raise TypeError("height must be an integer")
         elif value <= 0:
             raise ValueError("height must be > 0")
@@ -41,7 +41,7 @@ class Rectangle(Base):
         return self.__x
     @x.setter
     def x(self, value):
-        if not isinstance(value, int):
+        if type(value) != int:
             raise TypeError("x must be an integer")
         elif value < 0:
             raise ValueError("x must be >= 0")
@@ -53,7 +53,7 @@ class Rectangle(Base):
         return self.__y
     @y.setter
     def y(self, value):
-        if not isinstance(value, int):
+        if type(value) != int:
             raise TypeError("y must be an integer")
         elif value < 0:
             raise ValueError("y must be >= 0")
@@ -72,7 +72,7 @@ class Rectangle(Base):
 
 
     """updating the argument to each attribute"""
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         if args:
             if len(args) >= 1:
                 self.id = args[0]
@@ -84,8 +84,9 @@ class Rectangle(Base):
                 self.__x = args[3]
             if len(args) >= 5:
                 self.__y = args[4]
-
-                
+        else:
+            for key, value in kwargs.items():
+                setattr(self, key, value)   
     """updating string method"""
     def __str__(self):
         return f"[Rectangle] ({self.id}) {self.x}/{self.y} - {self.width}/{self.height}"
