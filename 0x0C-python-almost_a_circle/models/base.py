@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """"Defines a Class"""
 import json
+import csv
 
 class Base:
     """to manage id attribute in all your future classes 
@@ -60,5 +61,35 @@ class Base:
                 json_data = file.read()
                 dict_list = cls.from_json_string(json_data)
                 return [cls.create(**d) for d in dict_list]
+        except FileNotFoundError:
+            return []
+
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        if list_objs is None:
+            list_objs = []
+        filename = f"{cls.__name__}.csv"
+        with open(filename, 'w', newline='') as file:
+            csv_writer = csv.writer(file)
+            for obj in list_objs:
+                if cls.__name__ == "Rectangle":
+                    csv_writer.writerow([obj.id, obj.width, obj.height, obj.x, obj.y])
+                elif cls.__name__ == "Square":
+                    csv_writer.writerow([obj.id, obj.size, obj.x, obj.y])
+
+    @classmethod
+    def load_from_file_csv(cls):
+        filename = f"{cls.__name__}.csv"
+        try:
+            with open(filename, 'r') as file:
+                csv_reader = csv.reader(file)
+                instances = []
+                for row in csv_reader:
+                    if cls.__name__ == "Rectangle":
+                        instances.append(cls.create(id=int(row[0]), width=int(row[1]), height=int(row[2]), x=int(row[3]), y=int(row[4])))
+                    elif cls.__name__ == "Square":
+                        instances.append(cls.create(id=int(row[0]), size=int(row[1]), x=int(row[2]), y=int(row[3])))
+                return instances
         except FileNotFoundError:
             return []
