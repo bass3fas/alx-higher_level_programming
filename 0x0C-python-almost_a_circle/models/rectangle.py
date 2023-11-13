@@ -64,9 +64,10 @@ class Rectangle(Base):
 
     """representing the rectangle"""
     def display(self):
-        for i in range(self.__height):
-            print("#" * self.__width)
-
+        for i in range(self.__y):
+            print()
+        for j in range(self.__height):
+            print(" " * self.__x + "#" * self.__width)
 
     """updating string method"""
     def __str__(self):
