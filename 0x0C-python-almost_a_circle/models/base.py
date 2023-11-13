@@ -2,6 +2,8 @@
 """"Defines a Class"""
 import json
 import csv
+import turtle
+
 
 class Base:
     """to manage id attribute in all your future classes 
@@ -93,3 +95,38 @@ class Base:
                 return instances
         except FileNotFoundError:
             return []
+
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        window = turtle.Screen()
+        window.bgcolor("white")
+        window.title("Drawing Rectangles and Squares")
+
+        t = turtle.Turtle()
+        t.speed(2)
+
+        for rect in list_rectangles:
+            t.penup()
+            t.goto(rect.x, rect.y)
+            t.pendown()
+            t.color("blue")
+            t.forward(rect.width)
+            t.left(90)
+            t.forward(rect.height)
+            t.left(90)
+            t.forward(rect.width)
+            t.left(90)
+            t.forward(rect.height)
+            t.left(90)
+
+        for square in list_squares:
+            t.penup()
+            t.goto(square.x, square.y)
+            t.pendown()
+            t.color("red")
+            for _ in range(4):
+                t.forward(square.size)
+                t.left(90)
+
+        window.mainloop()
