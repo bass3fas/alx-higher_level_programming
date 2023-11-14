@@ -11,6 +11,11 @@ class Base:
     __nb_objects = 0
 
     def __init__(self, id=None):
+         """Initialize a new Base.
+
+        Args:
+            id (int): The identity of the new Base.
+        """
         if id is not None:
             self.id = id
         else:
@@ -19,6 +24,7 @@ class Base:
 
     @staticmethod
     def to_json_string(list_dictionaries):
+        """JSON representation"""
         if list_dictionaries is None or len(list_dictionaries) == 0:
             return '[]'
         return json.dumps(list_dictionaries)
@@ -40,12 +46,14 @@ class Base:
 
     @staticmethod
     def from_json_string(json_string):
+        """JSON representation to python"""
         if json_string is None or len(json_string) == 0:
             return []
         return json.loads(json_string)
 
     @classmethod
     def create(cls, **dictionary):
+        """"creating dummy instances """
         if cls.__name__ == "Rectangle":
             dummy_instance = cls(1, 1)
         elif cls.__name__ == "Square":
@@ -57,6 +65,7 @@ class Base:
 
     @classmethod
     def load_from_file(cls):
+        """loading from JSON file"""
         filename = cls.__name__ + ".json"
         try:
             with open(filename, 'r') as file:
@@ -68,6 +77,7 @@ class Base:
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
+        """"saving in CSV format"""
         if list_objs is None:
             list_objs = []
         filename = f"{cls.__name__}.csv"
@@ -83,6 +93,7 @@ class Base:
 
     @classmethod
     def load_from_file_csv(cls):
+        """reading CSV format file"""
         filename = f"{cls.__name__}.csv"
         try:
             with open(filename, 'r') as file:
@@ -106,6 +117,7 @@ class Base:
 
     @staticmethod
     def draw(list_rectangles, list_squares):
+        """open window and draw a rectangle"""
         window = turtle.Screen()
         window.bgcolor("white")
         window.title("Drawing Rectangles and Squares")
