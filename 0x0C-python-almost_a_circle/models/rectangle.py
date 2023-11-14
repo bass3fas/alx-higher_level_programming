@@ -11,10 +11,11 @@ class Rectangle(Base):
         self.__height = height
         self.__x = x
         self.__y = y
-    """getter and setter for width"""
+
     @property
     def width(self):
         return self.__width
+
     @width.setter
     def width(self, value):
         if type(value) != int:
@@ -23,10 +24,10 @@ class Rectangle(Base):
             raise ValueError("width must be > 0")
         self.__width = value
 
-    """getter and setter for height"""
     @property
     def height(self):
         return self.__height
+
     @height.setter
     def height(self, value):
         if type(value) != int:
@@ -35,10 +36,10 @@ class Rectangle(Base):
             raise ValueError("height must be > 0")
         self.__height = value
 
-    """getter and setter for x"""
     @property
     def x(self):
         return self.__x
+
     @x.setter
     def x(self, value):
         if type(value) != int:
@@ -47,10 +48,10 @@ class Rectangle(Base):
             raise ValueError("x must be >= 0")
         self.__x = value
 
-    """getter and setter for y"""
     @property
     def y(self):
         return self.__y
+
     @y.setter
     def y(self, value):
         if type(value) != int:
@@ -58,20 +59,16 @@ class Rectangle(Base):
         elif value < 0:
             raise ValueError("y must be >= 0")
         self.__y = value
-    """define area of rectangle"""
+
     def area(self):
         return self.__width * self.__height
 
-    """representing the rectangle"""
     def display(self):
         for i in range(self.__y):
             print()
         for j in range(self.__height):
             print(" " * self.__x + "#" * self.__width)
 
-
-
-    """updating the argument to each attribute"""
     def update(self, *args, **kwargs):
         if args:
             if len(args) >= 1:
@@ -86,8 +83,7 @@ class Rectangle(Base):
                 self.__y = args[4]
         else:
             for key, value in kwargs.items():
-                setattr(self, key, value)   
-    """updating string method"""
+                setattr(self, key, value)
 
     def to_dictionary(self):
         return {
@@ -99,4 +95,6 @@ class Rectangle(Base):
         }
 
     def __str__(self):
-        return f"[Rectangle] ({self.id}) {self.x}/{self.y} - {self.width}/{self.height}"
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id,
+                                                       self.x, self.y,
+                                                       self.width, self.height)

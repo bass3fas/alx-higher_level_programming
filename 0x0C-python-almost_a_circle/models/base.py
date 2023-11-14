@@ -6,9 +6,10 @@ import turtle
 
 
 class Base:
-    """to manage id attribute in all your future classes 
+    """to manage id attribute in all your future classes
     and to avoid duplicating the same code"""
     __nb_objects = 0
+
     def __init__(self, id=None):
         if id is not None:
             self.id = id
@@ -21,7 +22,7 @@ class Base:
         if list_dictionaries is None or len(list_dictionaries) == 0:
             return '[]'
         return json.dumps(list_dictionaries)
-    
+
     @classmethod
     def save_to_file(cls, list_objs):
         """Write the JSON serialization of a list of objects to a file.
@@ -36,7 +37,6 @@ class Base:
             else:
                 list_dicts = [o.to_dictionary() for o in list_objs]
                 jsonfile.write(Base.to_json_string(list_dicts))
-
 
     @staticmethod
     def from_json_string(json_string):
@@ -57,7 +57,7 @@ class Base:
 
     @classmethod
     def load_from_file(cls):
-        filename = cls.__name__ +".json"
+        filename = cls.__name__ + ".json"
         try:
             with open(filename, 'r') as file:
                 json_data = file.read()
@@ -65,7 +65,6 @@ class Base:
                 return [cls.create(**d) for d in dict_list]
         except FileNotFoundError:
             return []
-
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
@@ -76,9 +75,11 @@ class Base:
             csv_writer = csv.writer(file)
             for obj in list_objs:
                 if cls.__name__ == "Rectangle":
-                    csv_writer.writerow([obj.id, obj.width, obj.height, obj.x, obj.y])
+                    csv_writer.writerow([obj.id, obj.width,
+                                         obj.height, obj.x, obj.y])
                 elif cls.__name__ == "Square":
-                    csv_writer.writerow([obj.id, obj.size, obj.x, obj.y])
+                    csv_writer.writerow([obj.id, obj.size,
+                                         obj.x, obj.y])
 
     @classmethod
     def load_from_file_csv(cls):
@@ -89,13 +90,19 @@ class Base:
                 instances = []
                 for row in csv_reader:
                     if cls.__name__ == "Rectangle":
-                        instances.append(cls.create(id=int(row[0]), width=int(row[1]), height=int(row[2]), x=int(row[3]), y=int(row[4])))
+                        instances.append(cls.create(id=int(row[0]),
+                                                    width=int(row[1]),
+                                                    height=int(row[2]),
+                                                    x=int(row[3]),
+                                                    y=int(row[4])))
                     elif cls.__name__ == "Square":
-                        instances.append(cls.create(id=int(row[0]), size=int(row[1]), x=int(row[2]), y=int(row[3])))
+                        instances.append(cls.create(id=int(row[0]),
+                                                    size=int(row[1]),
+                                                    x=int(row[2]),
+                                                    y=int(row[3])))
                 return instances
         except FileNotFoundError:
             return []
-
 
     @staticmethod
     def draw(list_rectangles, list_squares):
