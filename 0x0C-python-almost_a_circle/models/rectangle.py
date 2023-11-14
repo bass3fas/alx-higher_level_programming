@@ -87,7 +87,7 @@ class Rectangle(Base):
         return self.__width * self.__height
 
     def display(self):
-        """displays rectangle withtin 
+        """displays rectangle withtin
         correct coordinates by hash"""
         for i in range(self.__y):
             print()
