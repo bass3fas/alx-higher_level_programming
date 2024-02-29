@@ -11,7 +11,6 @@ def find_peak(list_of_integers):
     lo = 0
     hi = len(list_of_integers) - 1
 
-
     while lo < hi:
         mid = (hi + lo) // 2
 
