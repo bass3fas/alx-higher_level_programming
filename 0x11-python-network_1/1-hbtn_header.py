@@ -9,5 +9,4 @@ if __name__ == "__main__":
     url = sys.argv[1]
     html = urllib.request.Request(url)
     with urllib.request.urlopen(html) as response:
-        html_id = response.getheader('X-Request-Id')
-        print(html_id)
+        print(dict(response.headers).get("X-Request-Id"))
