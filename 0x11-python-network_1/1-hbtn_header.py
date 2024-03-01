@@ -7,6 +7,7 @@ import urllib.request
 
 if __name__ == "__main__":
     url = sys.argv[1]
-    with urllib.request.urlopen(url) as response:
+    html = urllib.request.Request(url)
+    with urllib.request.urlopen(html) as response:
         html_id = response.getheader('X-Request-Id')
         print(html_id)
